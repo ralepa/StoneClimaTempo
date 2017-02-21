@@ -16,7 +16,7 @@ namespace StoneClimaTempo
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "stone-tempo/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
