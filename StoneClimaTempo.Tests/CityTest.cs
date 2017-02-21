@@ -29,14 +29,75 @@ namespace StoneClimaTempo.Tests
             }
         }
 
+        /// <summary>
+        /// Cria uma instância de cidade com o nome devido
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private Models.City CreateMockCity(string name)
+        {
+            return new Models.City(name);
+        }
+
+        /// <summary>
+        /// Método para adicionar temperaturas aleatórias numa quantidade definida na cidade passada
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="quantity"></param>
+        private void AddTestTemperatures(Models.City city, int quantity)
+        {
+            Random random = new Random();
+            DateTime dateTime = new DateTime();
+            for (var i = 0; i < quantity; i++)
+            {
+                // Número aleatório de 20 a 40 
+                double temperature = random.NextDouble() * 20 + 20;
+                city.AddTemperatureRegistry(dateTime, temperature);
+            }
+        }
+
+        /// <summary>
+        /// Testa se um objeto básico é criado somente com nome
+        /// </summary>
         [TestMethod]
         public void CityShouldOnlyConstructWithName()
         {
-            Models.City cityTest = new Models.City("Rio de Janeiro");
+            Models.City cityTest = CreateMockCity("Rio de Janeiro");
             Assert.IsNotNull(cityTest);
 
             string cityName = cityTest.Name;
             Assert.IsNotNull(cityName);
+        }
+
+        /// <summary>
+        /// Testa se as temperaturas são gravadas no registro
+        /// </summary>
+        [TestMethod]
+        public void CityShouldAddTemperatureInfo()
+        {
+            Models.City cityTest = CreateMockCity("São Paulo");
+
+            AddTestTemperatures(cityTest, 2);
+
+            Assert.IsNotNull(cityTest.Temperatures);
+            Assert.IsTrue(cityTest.Temperatures.Count == 2);
+        }
+
+        /// <summary>
+        /// Testa se a lista com temperaturas é preenchida e depois esvaziada
+        /// </summary>
+        [TestMethod]
+        public void CityShouldClearTemperaturesInfo()
+        {
+            Models.City cityTest = CreateMockCity("São Paulo");
+
+            // Adiciona 5 temperaturas aleatórias
+            AddTestTemperatures(cityTest, 5);            
+            Assert.IsTrue(cityTest.Temperatures.Count == 5);
+            
+            // Reseta a lista de temperaturas
+            cityTest.ResetRegistries();
+            Assert.IsTrue(cityTest.Temperatures.Count == 0);
         }
     }
 }
