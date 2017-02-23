@@ -51,7 +51,7 @@ namespace StoneClimaTempo.Tests
             for (var i = 0; i < quantity; i++)
             {
                 // Número aleatório de 20 a 40 
-                double temperature = random.NextDouble() * 20 + 20;
+                int temperature = random.Next() * 20 + 20;
                 city.AddTemperatureRegistry(dateTime, temperature);
             }
         }

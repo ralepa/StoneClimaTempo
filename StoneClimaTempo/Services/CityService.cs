@@ -85,7 +85,7 @@ namespace StoneClimaTempo.Services
             List<CityTemperatures> cities = GetCachedData();
 
             // Faz uma busca pela maior temperatura de cada cidade registrada, somente nas cidades que contenham alguma temperatura
-            IDictionary<CityTemperatures, double> result = cities
+            IDictionary<CityTemperatures, int> result = cities
                 .Where(city => city.Temperatures.Count > 0 )
                 .Select(city => new { city, maxTemp = city.Temperatures.Max(temperature => temperature.Temperature) })
                 .ToDictionary(t => t.city, t => t.maxTemp);
@@ -109,7 +109,7 @@ namespace StoneClimaTempo.Services
             DateTime dateTime = BuildDateTimeFromApiResults(resultFromApi);
             int temp = resultFromApi.Temp;
 
-            TemperatureRegistry registry = new TemperatureRegistry(dateTime, (double)temp);
+            TemperatureRegistry registry = new TemperatureRegistry(dateTime, temp);
 
             CleanOldRegistriesFromCity(city);
 

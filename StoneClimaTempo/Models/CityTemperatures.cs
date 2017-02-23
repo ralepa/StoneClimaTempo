@@ -17,7 +17,7 @@ namespace StoneClimaTempo.Models
         public string City { get; set; }
         public List<TemperatureRegistry> Temperatures { get; set; }
 
-        public void AddTemperatureRegistry(DateTime dateTime, double temp)
+        public void AddTemperatureRegistry(DateTime dateTime, int temp)
         {
             var temperature = new TemperatureRegistry(dateTime, temp);
             Temperatures.Add(temperature);

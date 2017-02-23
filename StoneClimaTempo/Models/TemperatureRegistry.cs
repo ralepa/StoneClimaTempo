@@ -10,7 +10,7 @@ namespace StoneClimaTempo.Models
 
         private DateTime date;
 
-        public TemperatureRegistry(DateTime date, double temperature)
+        public TemperatureRegistry(DateTime date, int temperature)
         {
             this.date = date;
             Temperature = temperature;
@@ -26,6 +26,6 @@ namespace StoneClimaTempo.Models
         }
 
 
-        public double Temperature { get; private set; }
+        public int Temperature { get; private set; }
     }
 }
