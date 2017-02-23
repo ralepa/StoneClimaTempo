@@ -28,9 +28,14 @@ namespace StoneClimaTempo.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("city/{cityName}")]
-        public string Get(string cityName)
+        public string Get(HttpRequestMessage request, string cityName)
         {
             CityTemperatures data = service.LoadCityByName(cityName);
+            if(data == null)
+            {
+                request.CreateResponse(HttpStatusCode.NotModified);
+                return String.Empty;
+            }
             return JsonConvert.SerializeObject(data);
         }
 
@@ -55,8 +60,14 @@ namespace StoneClimaTempo.Controllers
         /// <param name="cityName"></param>
         [HttpDelete]
         [Route("city/{cityName}")]
-        public void Delete(string cityName)
+        public void Delete(HttpRequestMessage request, string cityName)
         {
+            CityTemperatures data = service.LoadCityByName(cityName);
+            if (data == null)
+            {
+                request.CreateResponse(HttpStatusCode.NotModified);
+                return;
+            }
             service.RemoveCityToProcessingList(cityName);
         }
 
@@ -66,8 +77,14 @@ namespace StoneClimaTempo.Controllers
         /// <param name="cityName"></param>
         [HttpPatch]
         [Route("city/{cityName}")]
-        public void Patch(string cityName)
+        public void Patch(HttpRequestMessage request, string cityName)
         {
+            CityTemperatures data = service.LoadCityByName(cityName);
+            if (data == null)
+            {
+                request.CreateResponse(HttpStatusCode.NotModified);
+                return;
+            }
             service.ClearTemperaturesFromCity(cityName);
         }
 
@@ -77,7 +94,7 @@ namespace StoneClimaTempo.Controllers
         /// </summary>
         [HttpGet]
         [Route("cities/max_temperatures")]
-        public string GetTopMaxTemperatures()
+        public string GetTopMaxTemperatures(HttpRequestMessage request)
         {
             List<CityTemperatures> data = service.LoadHottestCities(3);
             return JsonConvert.SerializeObject(data);

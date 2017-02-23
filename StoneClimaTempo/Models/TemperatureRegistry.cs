@@ -20,7 +20,7 @@ namespace StoneClimaTempo.Models
         {
             get
             {
-                return this.date.ToString("yyyy-MM-dd HH-mm-ss");
+                return this.date.ToString("yyyy-MM-dd HH:mm:ss");
             }
             private set { Date = value; }
         }
