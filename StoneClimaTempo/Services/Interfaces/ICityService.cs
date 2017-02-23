@@ -12,7 +12,7 @@ namespace StoneClimaTempo.Services.Interfaces
 
         void PopulateCityWithTemperatures(CityTemperatures city);
 
-        void ClearTemperaturesFromCity(CityTemperatures city);
+        void ClearTemperaturesFromCity(string cityName);
 
         List<CityTemperatures> LoadHottestCities(List<CityTemperatures> cities);
 

@@ -18,7 +18,7 @@ namespace StoneClimaTempo.Services
             consumer = new CityConsumer();
         }
         
-        public void ClearTemperaturesFromCity(CityTemperatures city)
+        public void ClearTemperaturesFromCity(string cityName)
         {
             throw new NotImplementedException();
         }
