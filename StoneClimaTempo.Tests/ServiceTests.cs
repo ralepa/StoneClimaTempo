@@ -18,6 +18,7 @@ namespace StoneClimaTempo.Tests
 
         ICityService service;
 
+        private const string Cep = "20961-020";
         private string[] cityNames = { "Rio de Janeiro", "São Paulo", "Curitiba" } ;
         
         private TestContext testContextInstance;
@@ -168,6 +169,17 @@ namespace StoneClimaTempo.Tests
 
             Assert.IsTrue(cities.Count == 0, "Lista de cidades deveria estar vazia");
 
+        }
+
+        [TestMethod]
+        public void TestAddCityToProcessingListByCep()
+        {
+            ClearTestList();
+            service.AddCityToProcessingListByCep(Cep);
+            List<CityTemperatures> cities = service.LoadAllCities();
+            CollectionAssert.AllItemsAreNotNull(cities);
+            Assert.IsNotNull(cities);
+            Assert.IsTrue(cities.Count == 1, "Lista de cidades deveria ter 1 elemento");
         }
     }
 }
