@@ -8,6 +8,6 @@ namespace StoneClimaTempo.Services.Interfaces
 {
     public interface ICepService
     {
-        
+        string LoadCityNameByCep(string cep);
     }
 }

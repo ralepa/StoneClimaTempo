@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TemperaturesLoader.Consumers;
 using TemperaturesLoader.Consumers.Interfaces;
 
 namespace StoneClimaTempo.Services
@@ -14,11 +15,17 @@ namespace StoneClimaTempo.Services
         
         private readonly ICepConsumer consumer;
         
-        [InjectionConstructor]
-        private CepService(ICepConsumer consumer)
+        /// <summary>
+        /// Construtor do serviço de CEP
+        /// </summary>
+        private CepService()
         {
-            this.consumer = consumer;
+            this.consumer = new CepConsumer();
         }
 
+        public string LoadCityNameByCep(string cep)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
