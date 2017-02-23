@@ -1,4 +1,5 @@
 ﻿using StoneClimaTempo;
+using StoneClimaTempo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,14 @@ namespace TemperaturesLoader.Consumers
 {
     public class CityConsumer : ICityConsumer
     {
-        public  object LoadTemperaturesData(string cityName)
+        public TemperaturesData LoadTemperaturesData(string cityName)
         {
             var task = Task.Run(async () => {
 
                 return await LoadTemperaturesFromApi(cityName);
             });
             string cityData = task.Result;
+
             return cityData;
         }
 

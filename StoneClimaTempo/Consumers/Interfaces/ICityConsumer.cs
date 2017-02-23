@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoneClimaTempo.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,6 @@ namespace TemperaturesLoader.Consumers.Interfaces
         /// </summary>
         /// <param name="cityName"></param>
         /// <returns></returns>
-        object LoadTemperaturesData(string cityName);
+        TemperaturesData LoadTemperaturesData(string cityName);
     }
 }
