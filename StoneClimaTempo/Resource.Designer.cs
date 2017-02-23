@@ -86,5 +86,23 @@ namespace StoneClimaTempo {
                 return ResourceManager.GetString("ApiTemperaturesUrl", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 30.
+        /// </summary>
+        internal static string MaxRegistries {
+            get {
+                return ResourceManager.GetString("MaxRegistries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3600000.
+        /// </summary>
+        internal static string SleepTime {
+            get {
+                return ResourceManager.GetString("SleepTime", resourceCulture);
+            }
+        }
     }
 }

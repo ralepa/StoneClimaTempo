@@ -16,12 +16,12 @@ namespace StoneClimaTempo.Cache
     {
         private static DataCache instance;
 
-        public List<CityTemperatures> cities { get; private set; }
+        public List<CityTemperatures> Cities { get; private set; }
         private ICityService service;
 
         private DataCache()
         {
-            cities = new List<CityTemperatures>();
+            Cities = new List<CityTemperatures>();
             service = new CityService();
             Thread thread = new Thread(ProcessTemperatureDataOnCities);
             thread.Start();
@@ -42,10 +42,11 @@ namespace StoneClimaTempo.Cache
 
         private void ProcessTemperatureDataOnCities()
         {
+            int sleepTime = Int32.Parse(Resource.SleepTime);
             while (true)
             {
-                Thread.Sleep(30000);
-                cities.ForEach(city =>
+                Thread.Sleep(sleepTime);
+                Cities.ForEach(city =>
                 {
                     service.PopulateCityWithTemperatures(city);
                 });

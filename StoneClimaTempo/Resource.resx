@@ -129,4 +129,12 @@
     <value>https://api.hgbrasil.com/weather/?format=json&amp;city_name={0}&amp;key={1}</value>
     <comment>URL para API de temperaturas</comment>
   </data>
+  <data name="MaxRegistries" xml:space="preserve">
+    <value>30</value>
+    <comment>Quantidade máxima de registros na lista de temperaturas</comment>
+  </data>
+  <data name="SleepTime" xml:space="preserve">
+    <value>3600000</value>
+    <comment>De quanto em quanto tempo que o processamento de cidades será executado</comment>
+  </data>
 </root>
