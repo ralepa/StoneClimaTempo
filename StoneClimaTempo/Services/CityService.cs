@@ -109,6 +109,8 @@ namespace StoneClimaTempo.Services
 
             CleanOldRegistriesFromCity(city);
 
+            city.Temperatures.Add(registry);
+
         }
 
         /// <summary>
@@ -185,6 +187,12 @@ namespace StoneClimaTempo.Services
         {
             List<CityTemperatures> cities = GetCachedData();
             return cities.SingleOrDefault(city => city.Name.Equals(cityName));
+        }
+
+        public void ClearAllCities()
+        {
+            List<CityTemperatures> cities = GetCachedData();
+            cities.Clear();
         }
     }
 }

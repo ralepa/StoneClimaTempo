@@ -82,10 +82,11 @@ namespace StoneClimaTempo.Tests
             string city1 = cityNames[0];
             string city2 = cityNames[1];
             service.AddCityToProcessingList(city1);
+            service.AddCityToProcessingList(city2);
             List<CityTemperatures> cities = service.LoadAllCities();
             CollectionAssert.AllItemsAreNotNull(cities);
             Assert.IsNotNull(cities);
-            Assert.IsTrue(cities.Count == 2);
+            Assert.IsTrue(cities.Count == 2, "Lista de cidades deveria ter 2 elementos");
         }
 
         [TestMethod]
@@ -107,10 +108,7 @@ namespace StoneClimaTempo.Tests
         /// </summary>
         private void ClearTestList()
         {
-            // Garantir que a lista estará vazia
-            service.RemoveCityToProcessingList(cityNames[0]);
-            service.RemoveCityToProcessingList(cityNames[1]);
-            service.RemoveCityToProcessingList(cityNames[2]);
+            service.ClearAllCities();
         }
 
         [TestMethod]
@@ -118,7 +116,7 @@ namespace StoneClimaTempo.Tests
         {
             ClearTestList();
 
-            Assert.IsTrue(service.LoadAllCities().Count == 0);
+            Assert.IsTrue(service.LoadAllCities().Count == 0, "A lista deveria estar vazia");
 
             service.AddCityToProcessingList(cityNames[0]);
             service.AddCityToProcessingList(cityNames[1]);

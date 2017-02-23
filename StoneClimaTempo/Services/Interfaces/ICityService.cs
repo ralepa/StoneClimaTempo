@@ -24,5 +24,7 @@ namespace StoneClimaTempo.Services.Interfaces
 
         void RemoveCityToProcessingList(string cityName);
 
+        void ClearAllCities();
+
     }
 }
