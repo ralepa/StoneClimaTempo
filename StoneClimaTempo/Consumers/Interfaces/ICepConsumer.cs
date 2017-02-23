@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TemperaturesLoader.Consumers.Interfaces
 {
-    interface ICepConsumer
+    public interface ICepConsumer
     {
         /// <summary>
         /// Método que retorna o nome da cidade pelo CEP

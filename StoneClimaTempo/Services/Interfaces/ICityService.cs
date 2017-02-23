@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoneClimaTempo.Services.Interfaces
 {
-    interface ICityService
+    public interface ICityService
     {
     }
 }

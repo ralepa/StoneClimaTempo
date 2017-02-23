@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TemperaturesLoader.Consumers.Interfaces
 {
-    interface ICityConsumer
+    public interface ICityConsumer
     {
         /// <summary>
         /// Método que retorna dados de temperatura a oartir do nome de uma cidade

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using StoneClimaTempo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using TemperaturesLoader.Consumers.Interfaces;
 
@@ -8,14 +10,28 @@ namespace TemperaturesLoader.Consumers
 {
     public class CityConsumer : ICityConsumer
     {
-        public string LoadCityNameByCep(string cep)
+        public  object LoadTemperaturesData(string cityName)
         {
-            throw new NotImplementedException();
+            var task = Task.Run(async () => {
+
+                return await LoadTemperaturesFromApi(cityName);
+            });
+            string cityData = task.Result;
+            return cityData;
         }
 
-        public object LoadTemperaturesData(string cityName)
+        private async Task<string> LoadTemperaturesFromApi(string cityName)
         {
-            throw new NotImplementedException();
+            using (var client = new HttpClient())
+            {
+                string address = Resource.ApiTemperaturesUrl;
+                string key = Resource.ApiTemperaturesKey;
+                string URL = String.Format(address, cityName, key);
+
+                var response =
+                    await client.GetStringAsync(URL);
+                return response;
+            }
         }
     }
 }
