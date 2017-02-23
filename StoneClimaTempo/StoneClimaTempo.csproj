@@ -136,7 +136,7 @@
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="DTOs\Forecast.cs" />
     <Compile Include="DTOs\Results.cs" />
-    <Compile Include="DTOs\RootObject.cs" />
+    <Compile Include="DTOs\TemperaturesData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
