@@ -8,5 +8,8 @@ namespace StoneClimaTempo.Services.Interfaces
 {
     public interface ICityService
     {
+
+        
+
     }
 }
