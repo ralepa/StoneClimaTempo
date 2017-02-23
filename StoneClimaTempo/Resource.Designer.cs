@@ -61,7 +61,7 @@ namespace StoneClimaTempo {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to viacep.com.br/ws/{0}/json/unicode/.
+        ///   Looks up a localized string similar to http://viacep.com.br/ws/{0}/json/unicode/.
         /// </summary>
         internal static string ApiCepUrl {
             get {

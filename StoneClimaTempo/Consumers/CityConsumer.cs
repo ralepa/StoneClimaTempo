@@ -20,7 +20,7 @@ namespace TemperaturesLoader.Consumers
             });
             string cityData = task.Result;
             
-            return JsonConvert.DeserializeObject<TemperaturesData>(cityData); ;
+            return JsonConvert.DeserializeObject<TemperaturesData>(cityData);
         }
 
         private async Task<string> LoadTemperaturesFromApi(string cityName)

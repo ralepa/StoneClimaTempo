@@ -1,4 +1,6 @@
-﻿using StoneClimaTempo;
+﻿using Newtonsoft.Json;
+using StoneClimaTempo;
+using StoneClimaTempo.DTOs;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,14 +10,15 @@ namespace TemperaturesLoader.Consumers
 {
     public class CepConsumer : ICepConsumer
     {
-        public string LoadCityNameByCep(string cep)
+        public CepData LoadCityNameByCep(string cep)
         {
             var task = Task.Run(async () => {
 
                 return await LoadCityNameFromApi(cep);
             });
-            return task.Result;
-    }
+            var cepData = task.Result;
+            return JsonConvert.DeserializeObject<CepData>(cepData);
+        }
 
         private async Task<string> LoadCityNameFromApi(string cep)
         {

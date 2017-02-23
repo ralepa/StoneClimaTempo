@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoneClimaTempo.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,6 @@ namespace TemperaturesLoader.Consumers.Interfaces
         /// </summary>
         /// <param name="cep"></param>
         /// <returns></returns>
-        string LoadCityNameByCep(string cep);
+        CepData LoadCityNameByCep(string cep);
     }
 }

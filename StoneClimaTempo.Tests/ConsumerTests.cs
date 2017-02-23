@@ -41,5 +41,18 @@ namespace StoneClimaTempo.Tests
 
             Assert.IsNotNull(result);       
         }
+
+        /// <summary>
+        /// Testa obtenção de dados da API de CEP
+        /// </summary>
+        [TestMethod]
+        public void CepAPIShouldReturnData()
+        {
+            ICepConsumer consumer = new CepConsumer();
+            var cep = "20961-020";
+            DTOs.CepData result = consumer.LoadCityNameByCep(cep);
+
+            Assert.IsNotNull(result);
+        }
     }
 }

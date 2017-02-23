@@ -134,6 +134,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="DTOs\CepData.cs" />
     <Compile Include="DTOs\Forecast.cs" />
     <Compile Include="DTOs\Results.cs" />
     <Compile Include="DTOs\TemperaturesData.cs" />

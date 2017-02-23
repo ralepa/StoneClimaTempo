@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApiCepUrl" xml:space="preserve">
-    <value>viacep.com.br/ws/{0}/json/unicode/</value>
+    <value>http://viacep.com.br/ws/{0}/json/unicode/</value>
     <comment>URL para API de CEPs</comment>
   </data>
   <data name="ApiTemperaturesKey" xml:space="preserve">
