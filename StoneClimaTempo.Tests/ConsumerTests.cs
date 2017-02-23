@@ -8,7 +8,7 @@ namespace StoneClimaTempo.Tests
     /// Classe de teste para City e suas funções
     /// </summary>
     [TestClass]
-    public class ConsumerTest
+    public class ConsumerTests
     {
         private TestContext testContextInstance;
 
