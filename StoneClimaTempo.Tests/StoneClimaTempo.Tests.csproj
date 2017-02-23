@@ -50,8 +50,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CityServiceTests.cs" />
-    <Compile Include="CityConsumerTests.cs" />
+    <Compile Include="ServiceTests.cs" />
+    <Compile Include="ConsumerTests.cs" />
     <Compile Include="CityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

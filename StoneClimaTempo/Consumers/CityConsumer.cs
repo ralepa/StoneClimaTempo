@@ -1,4 +1,5 @@
-﻿using StoneClimaTempo;
+﻿using Newtonsoft.Json;
+using StoneClimaTempo;
 using StoneClimaTempo.DTOs;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,8 @@ namespace TemperaturesLoader.Consumers
                 return await LoadTemperaturesFromApi(cityName);
             });
             string cityData = task.Result;
-
-            return cityData;
+            
+            return JsonConvert.DeserializeObject<TemperaturesData>(cityData); ;
         }
 
         private async Task<string> LoadTemperaturesFromApi(string cityName)

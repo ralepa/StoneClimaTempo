@@ -9,12 +9,8 @@ namespace StoneClimaTempo.Tests
     /// Classe de testes para a camada de serviço
     /// </summary>
     [TestClass]
-    public class CityServiceTests
+    public class ServiceTests
     {
-        public CityServiceTests()
-        {
-            
-        }
 
         private TestContext testContextInstance;
 

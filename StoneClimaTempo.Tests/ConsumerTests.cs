@@ -8,7 +8,7 @@ namespace StoneClimaTempo.Tests
     /// Classe de teste para City e suas funções
     /// </summary>
     [TestClass]
-    public class CityConsumerTest
+    public class ConsumerTest
     {
         private TestContext testContextInstance;
 
@@ -37,7 +37,7 @@ namespace StoneClimaTempo.Tests
         {
             ICityConsumer consumer = new CityConsumer();
             var cityName = "Rio de Janeiro";
-            object result = consumer.LoadTemperaturesData(cityName);
+            DTOs.TemperaturesData result = consumer.LoadTemperaturesData(cityName);
 
             Assert.IsNotNull(result);       
         }
