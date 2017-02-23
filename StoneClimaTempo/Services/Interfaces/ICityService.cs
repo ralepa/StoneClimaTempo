@@ -20,11 +20,13 @@ namespace StoneClimaTempo.Services.Interfaces
 
         CityTemperatures LoadCityByName(string cityName);
 
-        void AddCityToProcessingList(string cityName);
+        bool AddCityToProcessingList(string cityName);
 
         void RemoveCityToProcessingList(string cityName);
 
         void ClearAllCities();
+
+        bool AddCityToProcessingListByCep(string cep);
 
     }
 }

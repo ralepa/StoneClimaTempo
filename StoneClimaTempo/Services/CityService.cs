@@ -40,9 +40,11 @@ namespace StoneClimaTempo.Services
 
         /// <summary>
         /// Busca e adiciona uma cidade na lista de cidades
+        /// Retorna false se a cidade não for encontrada
         /// </summary>
         /// <param name="cityName"></param>
-        public void AddCityToProcessingList(string cityName)
+        /// <returns></returns>
+        public bool AddCityToProcessingList(string cityName)
         {
             List<CityTemperatures> cities = GetCachedData();
 
@@ -50,11 +52,13 @@ namespace StoneClimaTempo.Services
 
             if (alreadyRegistered)
             {
-                return;
+                return false;
             }
 
             CityTemperatures newCity = new CityTemperatures(cityName);
+            PopulateCityWithTemperatures(newCity);
             cities.Add(newCity);
+            return true;
         }
 
         /// <summary>
@@ -189,10 +193,31 @@ namespace StoneClimaTempo.Services
             return cities.SingleOrDefault(city => city.Name.Equals(cityName));
         }
 
+        /// <summary>
+        /// Limpa a lista de cidades do processamento
+        /// Somente utilizada nos testes
+        /// </summary>
         public void ClearAllCities()
         {
             List<CityTemperatures> cities = GetCachedData();
             cities.Clear();
+        }
+
+        /// <summary>
+        /// Adiciona uma cidade no processamento pelo CEP
+        /// Retorna false se a cidade não for encontrada
+        /// </summary>
+        /// <param name="cep"></param>
+        public bool AddCityToProcessingListByCep(string cep)
+        {
+            ICepService cepService = new CepService();
+            string cityName = cepService.LoadCityNameByCep(cep);
+
+            if(cityName == null)
+            {
+                return false;
+            }
+            return AddCityToProcessingList(cityName);
         }
     }
 }
