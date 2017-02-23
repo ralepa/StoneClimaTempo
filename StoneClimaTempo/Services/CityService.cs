@@ -34,7 +34,7 @@ namespace StoneClimaTempo.Services
         private CityTemperatures FindCityOnCitiesList(string cityName)
         {
             List<CityTemperatures> cities = GetCachedData();
-            CityTemperatures city = cities.SingleOrDefault(cityItem => cityItem.Name.Equals(cityName));
+            CityTemperatures city = cities.SingleOrDefault(cityItem => cityItem.City.Equals(cityName));
             return city;
         }
 
@@ -48,7 +48,7 @@ namespace StoneClimaTempo.Services
         {
             List<CityTemperatures> cities = GetCachedData();
 
-            bool alreadyRegistered = cities.Any(city => city.Name.Equals(cityName));
+            bool alreadyRegistered = cities.Any(city => city.City.Equals(cityName));
 
             if (alreadyRegistered)
             {
@@ -68,7 +68,7 @@ namespace StoneClimaTempo.Services
         public void ClearTemperaturesFromCity(string cityName)
         {
             List<CityTemperatures> cities = GetCachedData();
-            CityTemperatures city = cities.SingleOrDefault(cityItem => cityItem.Name.Equals(cityName));
+            CityTemperatures city = cities.SingleOrDefault(cityItem => cityItem.City.Equals(cityName));
             if (city != null)
             {
                 city.ResetRegistries();
@@ -102,7 +102,7 @@ namespace StoneClimaTempo.Services
         /// <param name="city"></param>
         public void PopulateCityWithTemperatures(CityTemperatures city)
         {
-            string cityName = city.Name;
+            string cityName = city.City;
             TemperaturesData data = consumer.LoadTemperaturesData(cityName);
             Results resultFromApi = data.Results;
 
@@ -169,7 +169,7 @@ namespace StoneClimaTempo.Services
         public void RemoveCityToProcessingList(string cityName)
         {
             List<CityTemperatures> cities = GetCachedData();
-            cities.RemoveAll(city => city.Name.Equals(cityName));
+            cities.RemoveAll(city => city.City.Equals(cityName));
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace StoneClimaTempo.Services
         public CityTemperatures LoadCityByName(string cityName)
         {
             List<CityTemperatures> cities = GetCachedData();
-            return cities.SingleOrDefault(city => city.Name.Equals(cityName));
+            return cities.SingleOrDefault(city => city.City.Equals(cityName));
         }
 
         /// <summary>

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using StoneClimaTempo.Models;
+using StoneClimaTempo.Services;
+using StoneClimaTempo.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +14,13 @@ namespace StoneClimaTempo.Controllers
     public class CityController : ApiController
     {
 
+        private ICityService service;
+
+        private CityController()
+        {
+            service = new CityService();
+        }
+
         /// <summary>
         /// Obtém histórico de temperaturas de uma cidade
         /// </summary>
@@ -19,7 +30,8 @@ namespace StoneClimaTempo.Controllers
         [Route("city/{cityName}")]
         public string Get(string cityName)
         {
-            throw new NotImplementedException();
+            CityTemperatures data = service.LoadCityByName(cityName);
+            return JsonConvert.SerializeObject(data);
         }
 
         /// <summary>
@@ -28,9 +40,13 @@ namespace StoneClimaTempo.Controllers
         /// <param name="name"></param>
         [HttpPost]
         [Route("city/{cityName}")]
-        public void Post(string cityName)
+        public void Post(HttpRequestMessage request, string cityName)
         {
-            throw new NotImplementedException();
+            bool found = service.AddCityToProcessingList(cityName);
+            if(!found)
+            {
+                request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
         /// <summary>
@@ -41,7 +57,7 @@ namespace StoneClimaTempo.Controllers
         [Route("city/{cityName}")]
         public void Delete(string cityName)
         {
-            throw new NotImplementedException();
+            service.RemoveCityToProcessingList(cityName);
         }
 
         /// <summary>
@@ -52,7 +68,7 @@ namespace StoneClimaTempo.Controllers
         [Route("city/{cityName}")]
         public void Patch(string cityName)
         {
-            throw new NotImplementedException();
+            service.ClearTemperaturesFromCity(cityName);
         }
 
 
@@ -61,9 +77,21 @@ namespace StoneClimaTempo.Controllers
         /// </summary>
         [HttpGet]
         [Route("cities/max_temperatures")]
-        public void GetTopMaxTemperatures()
+        public string GetTopMaxTemperatures()
         {
-            throw new NotImplementedException();
+            List<CityTemperatures> data = service.LoadHottestCities(3);
+            return JsonConvert.SerializeObject(data);
+        }
+
+        [HttpPost]
+        [Route("city/by_cep/{cep}")]
+        public void PostByCep(HttpRequestMessage request, string cep)
+        {
+            bool found = service.AddCityToProcessingListByCep(cep);
+            if (!found)
+            {
+                request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
     }

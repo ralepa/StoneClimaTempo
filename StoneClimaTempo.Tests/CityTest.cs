@@ -65,7 +65,7 @@ namespace StoneClimaTempo.Tests
             Models.CityTemperatures cityTest = CreateMockCity("Rio de Janeiro");
             Assert.IsNotNull(cityTest);
 
-            string cityName = cityTest.Name;
+            string cityName = cityTest.City;
             Assert.IsNotNull(cityName);
         }
 
